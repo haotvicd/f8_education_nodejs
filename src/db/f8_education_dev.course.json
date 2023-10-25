@@ -1,0 +1,18 @@
+[
+  {
+    "_id": {
+      "$oid": "6535e73f50071608b1c9d574"
+    },
+    "name": "Node & ExpressJS",
+    "description": "Học Back-end với Node & ExpressJS framework, hiểu các khái niệm khi làm Back-end và xây dựng RESTful API cho trang web.",
+    "image": "https://files.fullstack.edu.vn/f8-prod/courses/6.png"
+  },
+  {
+    "_id": {
+      "$oid": "6535e76e50071608b1c9d575"
+    },
+    "name": "Xây Dựng Website với ReactJS",
+    "description": "Khóa học ReactJS từ cơ bản tới nâng cao, kết quả của khóa học này là bạn có thể làm hầu hết các dự án thường gặp với ReactJS. Cuối khóa học này bạn sẽ sở hữu một dự án giống Tiktok.com, bạn có thể tự tin đi xin việc khi nắm chắc các kiến thức được chia sẻ trong khóa học này.",
+    "image": "https://files.fullstack.edu.vn/f8-prod/courses/13/13.png"
+  }
+]

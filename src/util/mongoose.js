@@ -1,3 +1,1 @@
-export const mapObject = (objs) => {
-  return objs.map(o => o.toObject())
-}
+export const mapObject = (objs) => objs.map(o => o.toObject())

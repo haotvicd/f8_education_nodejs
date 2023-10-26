@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
-import Course from "../models/Course.js";
+import {CourseModel} from "../models/Course.js";
 import { mapObject } from "../util/mongoose.js";
 
-const CourseModel = mongoose.model("Course", Course);
+// const CourseModel = mongoose.model("Course", Course);
 
 class SiteController {
   async index(req, res, next) {

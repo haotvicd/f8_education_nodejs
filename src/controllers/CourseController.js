@@ -1,15 +1,14 @@
 import mongoose from "mongoose";
-import Course from "../models/Course.js";
+import {CourseModel} from "../models/Course.js";
 import { mapObject } from "../util/mongoose.js";
 
-const CourseModel = mongoose.model("Course", Course);
 
 class CourseController {
-  createCourse(req, res, next) {
+  create(req, res, next) {
     res.render('course/create')
   }
 
-  async showCourse(req, res, next) {
+  async show(req, res, next) {
     try {
       const data = await CourseModel.find({});
       const course = mapObject(data);
@@ -19,18 +18,17 @@ class CourseController {
     }
   }
 
-  addCourse(req, res, next) {
+  add(req, res, next) {
     try {
-      const formData = req.body;
-      formData.image = `https://img.youtube.com/vi/${req.body.videoId}/sddefault.jpg`;
-      const newCourse = new CourseModel(formData);
-      newCourse.save().then(() => res.redirect('/'));
+      req.body.image = `https://img.youtube.com/vi/${req.body.videoId}/sddefault.jpg`;
+      const newCourse = new CourseModel(req.body);
+      newCourse.save().then(() => res.redirect('/me/stored/courses/'));
     } catch (error) {
       throw error;
     }
   }
 
-  async editCourse(req, res, next) {
+  async edit(req, res, next) {
     try {
       const data = await CourseModel.findById(req.params.id);
       res.render('course/edit', {
@@ -44,13 +42,25 @@ class CourseController {
     }
   }
 
-  updateCourse(req, res, next) {
+  update(req, res, next) {
     CourseModel.updateOne({_id: req.params.id}, req.body )
       .then(() => res.redirect('/me/stored/courses/'))
       .catch(next)
   }
 
-  deleteCourse(req, res, next) {
+  restore(req, res, next) {
+    CourseModel.restore({ _id: req.params.id })
+      .then(() => res.redirect('back'))
+      .catch(next)
+  }
+
+  softDelete(req, res, next) {
+    CourseModel.delete({ _id: req.params.id })
+      .then(() => res.redirect('back'))
+      .catch(next)
+  }
+
+  forceDelete(req, res, next) {
     CourseModel.deleteOne({ _id: req.params.id })
       .then(() => res.redirect('back'))
       .catch(next)
